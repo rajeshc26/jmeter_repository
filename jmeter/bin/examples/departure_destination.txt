@@ -1,0 +1,18 @@
+Departure Cities:
+Buenos Aires
+Rome
+London
+Berlin
+New York
+Dublin
+Cairo
+
+
+Destination Cities: 
+Paris
+Philadelphia
+Boston
+Portland
+San Diego
+Mexico City
+São Paolo
