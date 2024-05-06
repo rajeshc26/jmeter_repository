@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- develop
+
+schedules:
+  - cron: "30 * * * *"
+    displayName: Every 30 minutes
+    branches:
+      include:
+        - develop
+    always: true
+    
+pool:
+  vmImage: my-personal-laptop
+
+steps:
+- task: JMeterInstaller@0
+  inputs:
+    jmeterVersion: '5.4.2'
+
+- task: CmdLine@2
+  inputs:
+    script: 'jmeter -n -t JPetstore.jmx -l results2.jtl -e -o results'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/_rajeshc26_jmeter_repository/jmeter/bin/examples'
+
+- task: PublishReleaseArtifact@1
+  inputs:
+    artifactPath: '$(System.DefaultWorkingDirectory)'
