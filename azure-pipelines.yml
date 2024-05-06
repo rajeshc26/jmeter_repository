@@ -6,6 +6,13 @@
 trigger:
 - develop
 
+schedules:
+  - cron: "0 * 30 * *"
+    displayName: Every 30 minutes
+    branches:
+      include:
+        - develop
+    always: true
 pool:
   vmImage: my-personal-laptop
 
